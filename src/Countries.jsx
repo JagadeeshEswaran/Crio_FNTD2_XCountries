@@ -6,12 +6,16 @@ const Countries = () => {
 	const [countriesList, setCountriesList] = useState([]);
 
 	const fetchCountriesList = async () => {
-		let response = await axios.get("https://restcountries.com/v3.1/all");
+		try {
+			let response = await axios.get("https://restcountries.com/v3.1/all");
 
-		console.log(response.data[0]);
+			console.log(response.data[0]);
 
-		if (response.status === 200) {
-			setCountriesList(response.data);
+			if (response.status === 200) {
+				setCountriesList(response.data);
+			}
+		} catch (error) {
+			console.log(error);
 		}
 	};
 
